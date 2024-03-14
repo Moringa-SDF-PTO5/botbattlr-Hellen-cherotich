@@ -17,7 +17,7 @@ const App = () => {
 
   const dischargeBot = async (botId) => {
     try {
-      await fetch(`https://botbattlr-cherotich-hellen-j9u6ax3tq-my-team-8702db68.vercel.app/${botId}`, {
+      await fetch(`http://localhost:3000/bots/${botId}`, {
         method: 'DELETE'
       });
       setArmy(army.filter(b => b.id !== botId));
@@ -27,7 +27,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetch(`https://botbattlr-cherotich-hellen-j9u6ax3tq-my-team-8702db68.vercel.app/`)
+    fetch(`http://localhost:3000/bots/`)
       .then(response => response.json())
       .then(data => setArmy(data))
       .catch(error => console.error('Error fetching bots:', error));
