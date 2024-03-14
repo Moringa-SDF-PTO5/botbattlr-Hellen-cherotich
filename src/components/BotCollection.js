@@ -5,7 +5,7 @@ const BotCollection = ({ enlistBot }) => {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/bots/`)
+    fetch(`http://localhost:3000/`)
       .then(response => response.json())
       .then(data => setBots(data))
       .catch(error => console.error('Error fetching bots:', error));
