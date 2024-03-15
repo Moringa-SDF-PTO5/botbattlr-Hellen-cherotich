@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import BotCollection from './components/BotCollection';
 import YourBotArmy from './components/YourBotArmy';
 
-
 const App = () => {
   const [army, setArmy] = useState([]);
 
@@ -17,7 +16,7 @@ const App = () => {
 
   const dischargeBot = async (botId) => {
     try {
-      await fetch(`https://http://localhost:3000/bots${botId}`, {
+      await fetch(`https://vercel.com/my-team-8702db68/botbattlr-hellen-cherotich/7oDF3ueJz3hyj7QwPqcbE8sCtkH3/${botId}`, {
         method: 'DELETE'
       });
       setArmy(army.filter(b => b.id !== botId));
@@ -27,10 +26,17 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/bots`)
-      .then(response => response.json())
-      .then(data => setArmy(data))
-      .catch(error => console.error('Error fetching bots:', error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://vercel.com/my-team-8702db68/botbattlr-hellen-cherotich/7oDF3ueJz3hyj7QwPqcbE8sCtkH3`);
+        const data = await response.json();
+        setArmy(data);
+      } catch (error) {
+        console.error('Error fetching bots:', error);
+      }
+    };
+
+    fetchData(`https://vercel.com/my-team-8702db68/botbattlr-hellen-cherotich/7oDF3ueJz3hyj7QwPqcbE8sCtkH3`);
   }, []);
 
   return (
