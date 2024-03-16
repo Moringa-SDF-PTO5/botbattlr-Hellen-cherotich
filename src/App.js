@@ -28,7 +28,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://vercel.com/my-team-8702db68/botbattlr-hellen-cherotich/7oDF3ueJz3hyj7QwPqcbE8sCtkH3`);
+        const response = await fetch(`https://localhost:3000/bots`);
         const data = await response.json();
         setArmy(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const App = () => {
       }
     };
 
-    fetchData(`https://vercel.com/my-team-8702db68/botbattlr-hellen-cherotich/7oDF3ueJz3hyj7QwPqcbE8sCtkH3`);
+    fetchData();
   }, []);
 
   return (
