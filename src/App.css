@@ -13,6 +13,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.app-container {
+  max-width: 500px;
+  margin: 0;
+  padding:20px;
+}
 
 .App-link {
   color: #61dafb;
@@ -68,4 +73,17 @@
 
 .bot-details {
   margin-top: 2px;
+}
+.bot-collection-container,
+.your-bot-army-container {
+  width: 45%; 
+  float: left; 
+  margin-right: 5%;
+}
+
+
+.app-container::after {
+  content: '';
+  display: table;
+  clear: both;
 }
