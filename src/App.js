@@ -27,21 +27,21 @@ const App = () => {
       console.error('Error discharging bot:', error);
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://json-server-8vqy.onrender.com/bots`);
+        const response = await fetch(`https://botbattlr-hellen-cherotich.vercel.app/`);
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error('Failed to fetch');
         }
-  
         const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          setArmy(data);
+        } else {
           throw new Error('Response is not in JSON format');
         }
-  
-        const data = await response.json();
-        setBots(data);
       } catch (error) {
         console.error('Error fetching bots:', error);
       }
@@ -49,7 +49,6 @@ const App = () => {
   
     fetchData();
   }, []);
-  
   
   return (
     <div>

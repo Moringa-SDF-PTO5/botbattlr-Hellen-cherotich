@@ -14,6 +14,14 @@ code {
 .App {
   text-align: center;
 }
+.bot-collection {
+  border: 2px solid #282c34;
+  padding: 10px;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .App-logo {
   height: 40vmin;
