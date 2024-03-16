@@ -16,9 +16,12 @@ const App = () => {
 
   const dischargeBot = async (botId) => {
     try {
-      await fetch(`https://botbattlr-hellen-cherotich.vercel.app/${botId}`, {
+      const response = await fetch(`https://botbattlr-hellen-cherotich.vercel.app/${botId}`, {
         method: 'DELETE'
       });
+      if (!response.ok) {
+        throw new Error('Failed to delete bot');
+      }
       setArmy(army.filter(b => b.id !== botId));
     } catch (error) {
       console.error('Error discharging bot:', error);
@@ -36,16 +39,16 @@ const App = () => {
         setArmy(data);
       } catch (error) {
         console.error('Error fetching bots:', error);
-      
-        const responseText = await response.text();
-        console.log('Response:', responseText);
+        if (error.response) {
+          const responseText = await error.response.text();
+          console.log('Response:', responseText);
+        }
       }
     };
   
     fetchData();
   }, []);
   
-
   return (
     <div>
       <BotCollection enlistBot={enlistBot} bots={army} />
