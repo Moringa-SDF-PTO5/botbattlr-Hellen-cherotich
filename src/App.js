@@ -4,10 +4,36 @@ import BotCollection from './components/BotCollection';
 import YourBotArmy from './components/YourBotArmy';
 
 const App = () => {
+  const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://json-server-8vqy.onrender.com/bots`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+  
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Response is not in JSON format');
+        }
+  
+        const data = await response.json();
+        setBots(data);
+      } catch (error) {
+        console.error('Error fetching bots:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
   const enlistBot = (bot) => {
-    setArmy([...army, bot]);
+    if (!army.some(b => b.id === bot.id)) {
+      setArmy([...army, bot]);
+    }
   };
 
   const releaseBot = (bot) => {
@@ -16,44 +42,24 @@ const App = () => {
 
   const dischargeBot = async (botId) => {
     try {
-      const response = await fetch(`https://botbattlr-hellen-cherotich.vercel.app/${botId}`, {
+      await fetch(`https://json-server-8vqy.onrender.com/bots/${botId}`, {
         method: 'DELETE'
       });
-      if (!response.ok) {
-        throw new Error('Failed to delete bot');
-      }
       setArmy(army.filter(b => b.id !== botId));
     } catch (error) {
       console.error('Error discharging bot:', error);
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://botbattlr-hellen-cherotich.vercel.app/`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          const data = await response.json();
-          setArmy(data);
-        } else {
-          throw new Error('Response is not in JSON format');
-        }
-      } catch (error) {
-        console.error('Error fetching bots:', error);
-      }
-    };
-  
-    fetchData();
-  }, []);
-  
   return (
-    <div>
-      <BotCollection enlistBot={enlistBot} bots={army} />
-      <YourBotArmy army={army} releaseBot={releaseBot} dischargeBot={dischargeBot} />
+    <div className="app-container">
+      <div className="bot-collection">
+        <h2>All Bots</h2>
+        <BotCollection bots={bots} enlistBot={enlistBot} />
+      </div>
+      <div className="your-bot-army">
+        <YourBotArmy army={army} releaseBot={releaseBot} dischargeBot={dischargeBot} />
+      </div>
     </div>
   );
 };

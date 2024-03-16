@@ -1,32 +1,21 @@
-import React, { useState } from 'react';
+// BotCard.js
+import React from 'react';
 
 const BotCard = ({ bot, onEnlist }) => {
-  const [enlisted, setEnlisted] = useState(false);
-
   const handleEnlist = () => {
-    setEnlisted(true);
-    if (onEnlist) {
-      onEnlist(bot);
-    }
+    onEnlist(bot); // Enlist the bot
   };
-
-  // Prop validation
-  if (!bot || typeof bot !== 'object') {
-    return <div>No bot data available</div>;
-  }
-
-  const { name, avatar_url, health, damage, armor, bot_class, catchphrase } = bot;
 
   return (
     <div className="bot-card">
-      <h2>{name}</h2>
-      <img src={avatar_url} alt={name} style={{ width: '100px', height: '100px', borderRadius: '50%' }} />
-      <p>Health: {health}</p>
-      <p>Damage: {damage}</p>
-      <p>Armor: {armor}</p>
-      <p>Class: {bot_class}</p>
-      <p>Catchphrase: {catchphrase}</p>
-      {!enlisted && <button onClick={handleEnlist}>Enlist</button>}
+      <h2>{bot.name}</h2>
+      <img src={bot.avatar_url} alt={bot.name} style={{ width: '100px', height: '100px', borderRadius: '50%' }} />
+      <p>Health: {bot.health}</p>
+      <p>Damage: {bot.damage}</p>
+      <p>Armor: {bot.armor}</p>
+      <p>Class: {bot.bot_class}</p>
+      <p>Catchphrase: {bot.catchphrase}</p>
+      <button onClick={handleEnlist}>Enlist</button> {/* Add enlist button */}
     </div>
   );
 };

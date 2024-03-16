@@ -17,7 +17,25 @@
 .App-link {
   color: #61dafb;
 }
+.army-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
 
 .bot-collection {
   border: 2px solid #282c34;
@@ -33,13 +51,13 @@
 .bot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 20px;
-  padding: 20px;
+  grid-gap: 10px;
+  padding: 10px;
 }
 
 .bot-card {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 2px;
   background-color: #fff;
 }
 
@@ -49,5 +67,5 @@
 }
 
 .bot-details {
-  margin-top: 10px;
+  margin-top: 2px;
 }

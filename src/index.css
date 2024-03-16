@@ -22,7 +22,25 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.army-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
