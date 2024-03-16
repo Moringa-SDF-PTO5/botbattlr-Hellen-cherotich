@@ -29,15 +29,22 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`https://botbattlr-hellen-cherotich.vercel.app/`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
         const data = await response.json();
         setArmy(data);
       } catch (error) {
         console.error('Error fetching bots:', error);
+      
+        const responseText = await response.text();
+        console.log('Response:', responseText);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   return (
     <div>
