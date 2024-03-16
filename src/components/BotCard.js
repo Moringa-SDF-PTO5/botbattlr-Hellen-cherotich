@@ -1,6 +1,5 @@
-// BotCard.js
 import React, { useState } from 'react';
-import Bot from './Bot'
+
 const BotCard = ({ bot, onEnlist }) => {
   const [enlisted, setEnlisted] = useState(false);
 
@@ -10,10 +9,6 @@ const BotCard = ({ bot, onEnlist }) => {
       onEnlist(bot);
     }
   };
-  if (!bot) {
-    return <div>No bot data available</div>;
-  }
-  const { name, avatar_url, health, damage, armor, bot_class, catchphrase } = bot;
 
   return (
     <div className="bot-card">

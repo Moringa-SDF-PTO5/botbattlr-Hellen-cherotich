@@ -12,14 +12,10 @@ const BotCollection = ({ enlistBot }) => {
   }, []);
 
   return (
-    <div>
+    <div className="bot-collection">
       {bots.map(bot => (
-        <div key={bot.id}>
-        <BotCard bot={bot} onEnlist={enlistBot} />
-        
-           </div>
+        <BotCard key={bot.id} bot={bot} onEnlist={enlistBot} />
       ))}
-
     </div>
   );
 };
