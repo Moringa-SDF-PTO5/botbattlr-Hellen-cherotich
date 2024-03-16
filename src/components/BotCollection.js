@@ -3,12 +3,27 @@ import BotCard from './BotCard';
 
 const BotCollection = ({ enlistBot }) => {
   const [bots, setBots] = useState([]);
-
   useEffect(() => {
-    fetch(`https://json-server-8vqy.onrender.com/bots`)
-      .then(response => response.json())
-      .then(data => setBots(data))
-      .catch(error => console.error('Error fetching bots:', error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://json-server-8vqy.onrender.com/bots`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+  
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Response is not in JSON format');
+        }
+  
+        const data = await response.json();
+        setBots(data);
+      } catch (error) {
+        console.error('Error fetching bots:', error);
+      }
+    };
+  
+    fetchData();
   }, []);
 
   return (
