@@ -1,43 +1,72 @@
-# botbattlr-Hellen-cherotich
-BotBattlr React Application
-Welcome to BotBattlr! This project is a React application that allows you to manage a collection of bots, enlist them into your army, and engage in thrilling battles.
+Bot Battlr
+Welcome to Bot Battlr, a React application where you can build and manage your own Bot Army! This project is part of the Phase 2 Code Challenge for the React Immersive course at Moringa School.
 
-Setup
-To get started with BotBattlr, follow these instructions:
+Table of Contents
+Introduction
+Installation
+Features
+Usage
+API Integration
+Technologies Used
+Author
+License
+Introduction
+Bot Battlr allows you to browse through a list of available robots, view their details, and enlist them into your army. You can release bots from your army or permanently discharge them from both the frontend and backend.
 
-Create a GitHub Repository: Create a new PRIVATE repository in the Moringa-SDF-PTO5 organization. Name your repository in the format botbattlr-firstname-lastname. For example, botbattlr-Hellen-cherotich.
+Installation
+To run this application locally, follow these steps:
 
-Download Server Data: Download the server db.json file from here. Ensure you have json-server installed on your machine.
-
-Start JSON Server: Run the following command in your terminal to start the backend server:
+Clone this repository to your local machine:
+bash
+Copy code
+git clone https://github.com/Moringa-SDF-PTO5/botbattlr-Hellen-cherotich.git
+Navigate to the project directory:
+bash
+Copy code
+cd botbattlr-Hellen-cherotich
+Install dependencies using npm or yarn:
+bash
+Copy code
+npm install
+or
 
 bash
 Copy code
-$ json-server --watch db.json
-Test Your Server: Visit the following route in your browser to verify that the server is running correctly: http://localhost:3000/bots
+yarn install
+Start the development server:
+bash
+Copy code
+npm start
+or
 
-Deploy JSON Server: Follow this guide to deploy your JSON server.
+bash
+Copy code
+yarn start
+Features
+View profiles of all available bots in the Bot Collection.
+Add individual bots to your army by clicking on them.
+Release bots from your army by clicking on them.
+Permanently discharge bots from both the backend and frontend.
+Usage
+Once the application is running, you can access it in your web browser. You will see two sections:
 
-Core Deliverables
-In BotBattlr, you should be able to:
+Bot Collection: Displays all available bots. Click on a bot to enlist it into your army.
+Your Bot Army: Displays the bots enlisted into your army. Click on a bot to release it from your army or permanently discharge it by clicking the red "x" button.
+API Integration
+The application integrates with a JSON server to fetch and manipulate bot data. The endpoints used are:
 
-See profiles of all bots rendered in BotCollection.
-Add an individual bot to your army by clicking on it. The selected bot should render in the YourBotArmy component. Each bot can only be enlisted once and will not disappear from the BotCollection.
-Release a bot from your army by clicking on it. The bot will disappear from the YourBotArmy component.
-Discharge a bot from service forever by clicking the red "x" button. This action will delete the bot both from the backend and from the YourBotArmy on the frontend.
-Endpoints for Core Deliverables
 GET /bots: Retrieve a list of available bots.
 DELETE /bots/:id: Delete a bot by its ID.
-Advanced Deliverables
-While not required, these advanced features can further enhance your BotBattlr experience:
+Technologies Used
+React
+useState and useEffect hooks for state management and side effects.
+Fetch API for asynchronous data fetching.
+JSON server for backend simulation.
+Author
+This project is authored by [Your Name]. You can contact me at your-email@example.com.
 
-Choose whether to enlist a bot into your army or view its data. Clicking on the card will display a detailed view (BotSpecs) for that bot, replacing BotCollection.
-Sort bots by their health, damage, or armor using the SortBar component.
-Filter bots by their class, allowing multiple filters at the same time.
-Enlist only one bot from each bot_class.
-Conclusion
-BotBattlr provides an exciting opportunity to demonstrate your React skills while managing an army of powerful bots. Have fun and happy battling! 
-
+License
+This project is licensed under the MIT License.
 
 
 
