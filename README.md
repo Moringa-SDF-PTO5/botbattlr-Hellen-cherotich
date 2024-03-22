@@ -62,8 +62,6 @@ React
 useState and useEffect hooks for state management and side effects.
 Fetch API for asynchronous data fetching.
 JSON server for backend simulation.
-Author
-This project is authored by [Your Name]. You can contact me at your-email@example.com.
 
 License
 This project is licensed under the MIT License.
